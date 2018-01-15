@@ -22,4 +22,13 @@ io.on('connection', socket => {
   });
 });
 
+io.on('connection', socket => {
+  socket.on('disconnect', () => {
+    userService.removeUser(socket.id);
+    socket.broadcast.emit('update', {
+      users: userService.getAllUsers()
+    });
+  });
+});
+
 server.listen(3000, () => console.log('listening on *:3000'));
