@@ -25893,7 +25893,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "._2paQGz9IZpfMwzHu4k5HeL {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 100vw;\n    height: 100vh;\n}\n\n._37u6J9ZrBigjkeSnmF2fyE {\n    padding: 20px;\n    font-size: 2em;\n    border: 0;\n    border-bottom: 1px solid #ccc;\n    width: 510px;\n}", ""]);
+exports.push([module.i, "._2paQGz9IZpfMwzHu4k5HeL {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100vw;\n  height: 100vh;\n}\n\n._37u6J9ZrBigjkeSnmF2fyE {\n  padding: 20px;\n  font-size: 2em;\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  width: 520px;\n}\n", ""]);
 
 // exports
 exports.locals = {
