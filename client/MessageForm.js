@@ -1,34 +1,39 @@
-mport React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import styles from './UserForm.css';
+import styles from './MessageForm.css';
 
-class UserForm extends Component {
+class MessageForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {name: ''};
+    this.state = { text: '' };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onUserSubmit(this.state.name);
+    const message = {
+      from: this.props.name,
+      text: this.state.text
+    };
+    this.props.onMessageSubmit(message);
+    this.setState({ text: '' });
   }
 
-  handleChange(e) {
-    this.setState({ name : e.target.value });
+  changeHandler(e) {
+    this.setState({ text: e.target.value });
   }
 
   render() {
-    return(
-      <form className={styles.UserForm} onSubmit={e => this.handleSubmit(e)}>
+    return (
+      <form className={styles.MessageForm} onSubmit={e => this.handleSubmit(e)}>
         <input
-          className={styles.UserInput}
-          placeholder='Write your nickname and press enter'
-          onChange={e => this.handleChange(e)}
-          value={this.state.name}
+          className={styles.MessageInput}
+          onChange={e => this.changeHandler(e)}
+          value={this.state.text}
+          placeholder="Message"
         />
       </form>
     );
   }
 }
 
-export default UserForm;
+export default MessageForm;

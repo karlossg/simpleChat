@@ -16,26 +16,26 @@ class App extends Component {
 
   componentDidMount() {
     socket.on('message', message => this.messageReceive(message));
-    socket.on('update', ({users}) => this.chatUpdate(users));
+    socket.on('update', ({ users }) => this.chatUpdate(users));
   }
 
   messageReceive(message) {
     const messages = [message, ...this.state.messages];
-    this.setState({messages});
+    this.setState({ messages });
   }
 
   chatUpdate(users) {
-    this.setState({users});
+    this.setState({ users });
   }
 
   handleMessageSubmit(message) {
     const messages = [message, ...this.state.messages];
-    this.setState({messages});
+    this.setState({ messages });
     socket.emit('message', message);
   }
 
   handleUserSubmit(name) {
-    this.setState({name});
+    this.setState({ name });
     socket.emit('join', name);
   }
 
@@ -55,11 +55,11 @@ class App extends Component {
         </div>
       </div>
     );
+  }
 
-    renderUserForm() {
-      return (<UserForm onUserSubmit={name => this.handleUserSubmit(name)} />)
-   }
-  
+  renderUserForm() {
+    return <UserForm onUserSubmit={name => this.handleUserSubmit(name)} />;
+  }
 
   render() {
     return this.state.name !== '' ? this.renderLayout() : this.renderUserForm();
