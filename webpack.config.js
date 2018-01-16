@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = env => {
   var plugins = [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'public/index.html',
       filename: 'index.html',
       inject: 'body'
     })
@@ -51,7 +51,7 @@ module.exports = env => {
           ]
         }
       ]
-    }
-    // plugins: plugins
+    },
+    plugins: plugins
   };
 };

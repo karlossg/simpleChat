@@ -11,7 +11,7 @@ const userService = new UsersService();
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => res.sendFile(_dirname + '/index.html'));
+app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
 
 io.on('connection', socket => {
   socket.on('join', name => {
