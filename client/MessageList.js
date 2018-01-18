@@ -13,7 +13,7 @@ const Message = props => (
 const MessageList = props => (
   <div className={styles.MessageList}>
     {props.messages.map((message, i) => {
-      return <Message key={i} from={message.from} text={message.text} stamp={message.date} />;
+      return <Message key={i} from={message.from} text={message.text} date={message.date} />;
     })}
   </div>
 );

@@ -11,7 +11,7 @@ const socket = io('/');
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], messages: [], text: '', name: '', date: '' };
+    this.state = { users: [], messages: [], text: '', name: '' };
   }
 
   componentDidMount() {

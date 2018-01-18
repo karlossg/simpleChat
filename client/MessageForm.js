@@ -8,21 +8,23 @@ class MessageForm extends Component {
     this.state = { text: '' };
   }
 
-
   handleSubmit(e) {
     e.preventDefault();
     const time = new Date();
 
-    const stamp = ("0" + time.getHours()).slice(-2) + ":" +
-      ("0" + time.getMinutes()).slice(-2) + ":" +
-      ("0" + time.getSeconds()).slice(-2)
-    console.log(stamp)
+    const stamp =
+      ('0' + time.getHours()).slice(-2) +
+      ':' +
+      ('0' + time.getMinutes()).slice(-2) +
+      ':' +
+      ('0' + time.getSeconds()).slice(-2);
+
     const message = {
       from: this.props.name,
       text: this.state.text,
       date: stamp
     };
-    console.log(message)
+
     this.props.onMessageSubmit(message);
     this.setState({ text: '' });
   }

@@ -22146,7 +22146,7 @@ var App = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
-    _this.state = { users: [], messages: [], text: '', name: '', date: '' };
+    _this.state = { users: [], messages: [], text: '', name: '' };
     return _this;
   }
 
@@ -25386,7 +25386,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "body {\r\n    margin: 0;\r\n}\r\n\r\n._3HtT6GDZDXMjHHfhWbFwsK {\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex: 1;\r\n    height: 100vh;\r\n}\r\n\r\n._llPSW5iWAXYliq7g-hel {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    border-bottom: 1px solid #ccc;\r\n}\r\n\r\n._1tPWRuM3cHxgEU3qrRkHhf {\r\n    display: flex;\r\n    width: 25vw;\r\n    border-right: 1px solid #ccc;\r\n    justify-content: center;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n._3MMUFcgGDSdP1d0FlbFIdO {\r\n    display: flex;\r\n    width: 75vw;\r\n    justify-content: center;\r\n    box-sizing: border-box;\r\n    padding: 20px;\r\n}\r\n\r\n._1Xm1lSJwOROAwGzk130swu {\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex: 1;\r\n}\r\n\r\n._1dVqIOiBK1eT6KrIm6Hnyo {\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 75vw;\r\n    flex: 1;\r\n}", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n}\n\n._3HtT6GDZDXMjHHfhWbFwsK {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  height: 100vh;\n}\n\n._llPSW5iWAXYliq7g-hel {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-bottom: 1px solid #ccc;\n}\n\n._1tPWRuM3cHxgEU3qrRkHhf {\n  display: flex;\n  width: 25vw;\n  border-right: 1px solid #ccc;\n  justify-content: center;\n  box-sizing: border-box;\n  padding: 20px;\n}\n\n._3MMUFcgGDSdP1d0FlbFIdO {\n  display: flex;\n  width: 75vw;\n  justify-content: center;\n  box-sizing: border-box;\n  padding: 20px;\n}\n\n._1Xm1lSJwOROAwGzk130swu {\n  display: flex;\n  flex-direction: row;\n  flex: 1;\n}\n\n._1dVqIOiBK1eT6KrIm6Hnyo {\n  display: flex;\n  flex-direction: column;\n  width: 75vw;\n  flex: 1;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -25528,14 +25528,14 @@ var MessageForm = function (_Component) {
     e.preventDefault();
     var time = new Date();
 
-    var stamp = ("0" + time.getHours()).slice(-2) + ":" + ("0" + time.getMinutes()).slice(-2) + ":" + ("0" + time.getSeconds()).slice(-2);
-    console.log(stamp);
+    var stamp = ('0' + time.getHours()).slice(-2) + ':' + ('0' + time.getMinutes()).slice(-2) + ':' + ('0' + time.getSeconds()).slice(-2);
+
     var message = {
       from: this.props.name,
       text: this.state.text,
       date: stamp
     };
-    console.log(message);
+
     this.props.onMessageSubmit(message);
     this.setState({ text: '' });
   };
@@ -25608,7 +25608,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "._1jMi-csxQtX0aGs1vYDoVW {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n._2CwExyCf7HbiY7VMTFtGOz {\r\n    flex: 1;\r\n    padding: 20px;\r\n    border: 0;\r\n    border-top: 1px solid #ccc;\r\n}", ""]);
+exports.push([module.i, "._1jMi-csxQtX0aGs1vYDoVW {\n    display: flex;\n    flex-direction: row;\n}\n\n._2CwExyCf7HbiY7VMTFtGOz {\n    flex: 1;\n    padding: 20px;\n    border: 0;\n    border-top: 1px solid #ccc;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -25630,6 +25630,7 @@ exports.locals = {
 
 
 var Message = function Message(props) {
+  console.log(props);
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
     { className: __WEBPACK_IMPORTED_MODULE_1__MessageList_css___default.a.Message },
@@ -25657,7 +25658,7 @@ var MessageList = function MessageList(props) {
     'div',
     { className: __WEBPACK_IMPORTED_MODULE_1__MessageList_css___default.a.MessageList },
     props.messages.map(function (message, i) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Message, { key: i, from: message.from, text: message.text, stamp: message.date });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Message, { key: i, from: message.from, text: message.text, date: message.date });
     })
   );
 };
@@ -25704,7 +25705,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "._2UvbzmgCLZxth5pRT2XhDs {\r\n    flex: 1;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: flex-start;\r\n    width: 75vw;\r\n    padding: 20px;\r\n}", ""]);
+exports.push([module.i, "._2UvbzmgCLZxth5pRT2XhDs {\n    flex: 1;\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-start;\n    width: 75vw;\n    padding: 20px;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -25790,7 +25791,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "._16RYw-DuB3WVvAZYlpObwy {\r\n    display: flex;\r\n    flex: 1;\r\n    width: 25vw;\r\n    justify-content: flex-start;\r\n    flex-direction: column;\r\n    border-right: 1px solid #ccc;\r\n}\r\n\r\n._2YzLrdLd1MeWx4XQSssJpj {\r\n    padding: 20px;\r\n    text-align: center;\r\n    background: #ccc;\r\n}\r\n\r\n.y02-8vkS2VDRQHBSq-5zv {\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\n._1QIEu1GWfORrHbUUbSWp9g {\r\n    list-style: none;\r\n    border-bottom: 1px solid #ccc;\r\n    padding: 20px;\r\n    margin: 0 0 0 20px;\r\n}", ""]);
+exports.push([module.i, "._16RYw-DuB3WVvAZYlpObwy {\n    display: flex;\n    flex: 1;\n    width: 25vw;\n    justify-content: flex-start;\n    flex-direction: column;\n    border-right: 1px solid #ccc;\n}\n\n._2YzLrdLd1MeWx4XQSssJpj {\n    padding: 20px;\n    text-align: center;\n    background: #ccc;\n}\n\n.y02-8vkS2VDRQHBSq-5zv {\n    margin: 0;\n    padding: 0;\n}\n\n._1QIEu1GWfORrHbUUbSWp9g {\n    list-style: none;\n    border-bottom: 1px solid #ccc;\n    padding: 20px;\n    margin: 0 0 0 20px;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -25904,7 +25905,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "._2paQGz9IZpfMwzHu4k5HeL {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: 100vw;\r\n  height: 100vh;\r\n}\r\n\r\n._37u6J9ZrBigjkeSnmF2fyE {\r\n  padding: 20px;\r\n  font-size: 2em;\r\n  border: 0;\r\n  border-bottom: 1px solid #ccc;\r\n  width: 520px;\r\n}\r\n", ""]);
+exports.push([module.i, "._2paQGz9IZpfMwzHu4k5HeL {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100vw;\n  height: 100vh;\n}\n\n._37u6J9ZrBigjkeSnmF2fyE {\n  padding: 20px;\n  font-size: 2em;\n  border: 0;\n  border-bottom: 1px solid #ccc;\n  width: 520px;\n}\n", ""]);
 
 // exports
 exports.locals = {
