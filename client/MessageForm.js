@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 import styles from './MessageForm.css';
 
@@ -22,7 +23,8 @@ class MessageForm extends Component {
     const message = {
       from: this.props.name,
       text: this.state.text,
-      date: stamp
+      date: stamp,
+      id: uuid.v4()
     };
 
     this.props.onMessageSubmit(message);

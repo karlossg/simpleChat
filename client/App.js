@@ -19,6 +19,9 @@ class App extends Component {
     socket.on('update', ({ users }) => this.chatUpdate(users));
   }
 
+  componentDidUpdate() {
+    console.log(this.state.messages);
+  }
   messageReceive(message) {
     const messages = [message, ...this.state.messages];
     this.setState({ messages });
