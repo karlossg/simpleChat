@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import moment from 'moment';
 
 import styles from './MessageForm.css';
+
+moment.locale('pl');
 
 class MessageForm extends Component {
   constructor(props) {
@@ -11,19 +14,19 @@ class MessageForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const time = new Date();
+    // const time = new Date();
 
-    const stamp =
-      ('0' + time.getHours()).slice(-2) +
-      ':' +
-      ('0' + time.getMinutes()).slice(-2) +
-      ':' +
-      ('0' + time.getSeconds()).slice(-2);
+    // const stamp =
+    //   ('0' + time.getHours()).slice(-2) +
+    //   ':' +
+    //   ('0' + time.getMinutes()).slice(-2) +
+    //   ':' +
+    //   ('0' + time.getSeconds()).slice(-2);
 
     const message = {
       from: this.props.name,
       text: this.state.text,
-      date: stamp,
+      date: moment().format('h:mm:ss'),
       id: uuid.v4()
     };
 

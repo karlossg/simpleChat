@@ -2,7 +2,11 @@ import React from 'react';
 
 import styles from './MessageList.css';
 
-const DeleteButton = props => <button onClick={() => props.removeMessage(props.id)}>x</button>;
+const DeleteButton = props => (
+  <button className={styles.DeleteButton} onClick={() => props.removeMessage(props.id)}>
+    x
+  </button>
+);
 
 const Message = props => (
   <div className={styles.Message}>
@@ -17,7 +21,7 @@ const MessageList = props => {
     <div className={styles.MessageList}>
       {props.messages.map((message, i) => {
         return (
-          <div key={message.id}>
+          <div className={styles.MessageRow} key={message.id}>
             <Message from={message.from} text={message.text} date={message.date} />
             <DeleteButton id={message.id} removeMessage={id => props.removeMessage(id)} />
           </div>
