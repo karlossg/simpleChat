@@ -22,11 +22,15 @@ class MessageForm extends Component {
     //   ('0' + time.getMinutes()).slice(-2) +
     //   ':' +
     //   ('0' + time.getSeconds()).slice(-2);
+    const localtime = moment.utc().toDate();
+    const stamp = moment(localtime).format('HH:mm:ss');
+
+
 
     const message = {
       from: this.props.name,
       text: this.state.text,
-      date: moment().format('h:mm:ss'),
+      date: `(${stamp})`,
       id: uuid.v4()
     };
 

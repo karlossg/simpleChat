@@ -12,7 +12,7 @@ const Message = props => (
   <div className={styles.Message}>
     <strong>{props.from} :</strong>
     <span>{props.text}</span>
-    <span>{props.date}</span>
+    <span className={styles.MessageDate}>{props.date}</span>
   </div>
 );
 
