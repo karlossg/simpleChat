@@ -22229,10 +22229,6 @@ var App = function (_Component) {
     });
   };
 
-  App.prototype.componentDidUpdate = function componentDidUpdate() {
-    console.log(this.state.messages);
-  };
-
   App.prototype.messageReceive = function messageReceive(message) {
     var messages = [message].concat(this.state.messages);
     this.setState({ messages: messages });
@@ -25864,17 +25860,39 @@ exports.locals = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MessageList_css__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MessageList_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__MessageList_css__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
-var DeleteButton = function DeleteButton(props) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'button',
-    null,
-    'x'
-  );
-};
+
+var DeleteButton = function (_React$Component) {
+  _inherits(DeleteButton, _React$Component);
+
+  function DeleteButton(props) {
+    _classCallCheck(this, DeleteButton);
+
+    return _possibleConstructorReturn(this, _React$Component.call(this, props));
+  }
+
+  DeleteButton.prototype.log = function log() {
+    console.log(this.props);
+  };
+
+  DeleteButton.prototype.render = function render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'button',
+      { onClick: this.log.bind(this) },
+      'x'
+    );
+  };
+
+  return DeleteButton;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
 var Message = function Message(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -25895,8 +25913,7 @@ var Message = function Message(props) {
       'span',
       null,
       props.date
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DeleteButton, null)
+    )
   );
 };
 
@@ -25905,7 +25922,12 @@ var MessageList = function MessageList(props) {
     'div',
     { className: __WEBPACK_IMPORTED_MODULE_1__MessageList_css___default.a.MessageList },
     props.messages.map(function (message, i) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Message, { key: i, id: message.id, from: message.from, text: message.text, date: message.date });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { key: message.id },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Message, { from: message.from, text: message.text, date: message.date }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DeleteButton, { id: message.id })
+      );
     })
   );
 };
