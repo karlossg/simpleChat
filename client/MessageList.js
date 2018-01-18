@@ -2,19 +2,7 @@ import React from 'react';
 
 import styles from './MessageList.css';
 
-class DeleteButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  log() {
-    console.log(this.props);
-  }
-
-  render() {
-    return <button onClick={this.log.bind(this)}>x</button>;
-  }
-}
+const DeleteButton = props => <button onClick={() => props.removeMessage(props.id)}>x</button>;
 
 const Message = props => (
   <div className={styles.Message}>
@@ -31,7 +19,7 @@ const MessageList = props => {
         return (
           <div key={message.id}>
             <Message from={message.from} text={message.text} date={message.date} />
-            <DeleteButton id={message.id} />
+            <DeleteButton id={message.id} removeMessage={id => props.removeMessage(id)} />
           </div>
         );
       })}
