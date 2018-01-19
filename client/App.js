@@ -17,22 +17,25 @@ class App extends Component {
   componentDidMount() {
     socket.on('message', message => this.messageReceive(message));
     socket.on('update', ({ users }) => this.chatUpdate(users));
-    socket.on('delete', message => this.handleMessageRemove(message.id));
+    socket.on('delete', id => this.messageRemove(id));
   }
 
   handleMessageRemove(id) {
     const remainder = this.state.messages.filter(message => message.id !== id);
+    const deleted = this.state.messages.filter(message => message.id === id);
     this.setState({ messages: remainder });
-    // socket.on('removeMessage', id);
+    socket.emit('delete', deleted);
+  }
+
+  messageRemove(id) {
+    // console.log(id)
+    const remainder = this.state.messages.filter(message => message.id !== id);
+    this.setState({ messages: remainder });
   }
 
   messageReceive(message) {
     const messages = [message, ...this.state.messages];
     this.setState({ messages });
-  }
-
-  chatUpdate(users) {
-    this.setState({ users });
   }
 
   handleMessageSubmit(message) {
@@ -44,6 +47,10 @@ class App extends Component {
   handleUserSubmit(name) {
     this.setState({ name });
     socket.emit('join', name);
+  }
+
+  chatUpdate(users) {
+    this.setState({ users });
   }
 
   renderLayout() {

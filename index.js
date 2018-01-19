@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
 
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
   socket.on('disconnect', () => {
     userService.removeUser(socket.id);
     socket.broadcast.emit('update', {
@@ -21,24 +21,26 @@ io.on('connection', function(socket) {
     });
   });
 
-  socket.on('message', function(message) {
+  socket.on('message', function (message) {
     const { name } = userService.getUserById(socket.id);
-    console.log(message.from);
-    console.log(name);
+    // console.log(message.from);
+    // console.log(name);
     socket.broadcast.emit('message', {
       text: message.text,
-      from: name
+      from: name,
+      date: message.date,
+      id: message.id
     });
   });
 
-  socket.on('delete', function(id) {
-    console.log(id);
-    // socket.broadcast.emit('delete', {
-    //   id: id
-    // });
+  socket.on('delete', function (deleted) {
+    // console.log(deleted[0].id);
+    socket.broadcast.emit('delete', {
+      id: deleted[0].id
+    });
   });
 
-  socket.on('join', function(name) {
+  socket.on('join', function (name) {
     userService.addUser({
       id: socket.id,
       name
