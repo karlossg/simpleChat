@@ -23,11 +23,14 @@ io.on('connection', function(socket) {
 
   socket.on('message', function(message) {
     const { name } = userService.getUserById(socket.id);
-    console.log(message);
     socket.broadcast.emit('message', {
       text: message.text,
       from: name
     });
+  });
+
+  socket.on('removeMessage', function(id) {
+    console.log(id);
   });
 
   socket.on('join', function(name) {

@@ -22,7 +22,7 @@ class App extends Component {
   removeMessage(id) {
     const remainder = this.state.messages.filter(message => message.id !== id);
     this.setState({ messages: remainder });
-    socket.emit('message', message);
+    socket.on('removeMessage', id);
   }
 
   messageReceive(message) {
