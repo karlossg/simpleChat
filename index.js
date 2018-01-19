@@ -31,14 +31,12 @@ io.on('connection', function(socket) {
     });
   });
 
-  // socket.on('delete', function(message) {
-  //   const { name } = userService.getUserById(socket.id);
-  //   // console.log(message);
-  //   socket.broadcast.emit('message', {
-  //     text: message.text,
-  //     from: name
-  //   });
-  // });
+  socket.on('delete', function(id) {
+    console.log(id);
+    // socket.broadcast.emit('delete', {
+    //   id: id
+    // });
+  });
 
   socket.on('join', function(name) {
     userService.addUser({

@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    socket.on('message', message => this.removeMessage(message.id));
+    socket.on('message', message => this.messageReceive(message));
     socket.on('update', ({ users }) => this.chatUpdate(users));
     socket.on('delete', message => this.handleMessageRemove(message.id));
   }
