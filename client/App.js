@@ -15,11 +15,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    socket.on('message', message => this.messageReceive(message));
+    socket.on('message', message => this.removeMessage(message.id));
     socket.on('update', ({ users }) => this.chatUpdate(users));
+    socket.on('delete', message => this.handleMessageRemove(message.id));
   }
 
-  removeMessage(id) {
+  handleMessageRemove(id) {
     const remainder = this.state.messages.filter(message => message.id !== id);
     this.setState({ messages: remainder });
     // socket.on('removeMessage', id);
@@ -55,7 +56,7 @@ class App extends Component {
         <div className={styles.AppBody}>
           <UsersList users={this.state.users} />
           <div className={styles.MessageWrapper}>
-            <MessageList messages={this.state.messages} removeMessage={id => this.removeMessage(id)} />
+            <MessageList messages={this.state.messages} removeMessage={id => this.handleMessageRemove(id)} />
             <MessageForm onMessageSubmit={message => this.handleMessageSubmit(message)} name={this.state.name} />
           </div>
         </div>

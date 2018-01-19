@@ -21,9 +21,9 @@ const MessageList = props => {
     <div className={styles.MessageList}>
       {props.messages.map((message, i) => {
         return (
-          <div className={styles.MessageRow} key={message.id}>
-            <Message from={message.from} text={message.text} date={message.date} />
-            <DeleteButton id={message.id} removeMessage={id => props.removeMessage(id)} />
+          <div className={styles.MessageRow} key={i}>
+            <Message key={message.id} from={message.from} text={message.text} date={message.date} />
+            <DeleteButton key={message.id + 1} id={message.id} removeMessage={id => props.removeMessage(id)} />
           </div>
         );
       })}
