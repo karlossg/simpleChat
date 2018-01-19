@@ -34,7 +34,9 @@ io.on('connection', function (socket) {
   socket.on('delete', function (toRemove) {
     const { name } = userService.getUserById(socket.id);
     socket.broadcast.emit('delete', {
-      id: toRemove.id
+      id: toRemove.id,
+      author: toRemove.from,
+      user: name
     });
   });
 

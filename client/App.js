@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   handleMessageRemove(toRemove) {
-    console.log(toRemove)
     const remainder = this.state.messages.filter(message => message.id !== toRemove.id);
 
     this.setState({ messages: remainder });
@@ -29,9 +28,11 @@ class App extends Component {
   }
 
   messageRemove(idObject) {
-    const id = idObject.id
-    const remainder = this.state.messages.filter(message => message.id !== id);
-    this.setState({ messages: remainder });
+    if (idObject.author === idObject.user) {
+      const id = idObject.id;
+      const remainder = this.state.messages.filter(message => message.id !== id);
+      this.setState({ messages: remainder });
+    }
   }
 
   messageReceive(message) {
