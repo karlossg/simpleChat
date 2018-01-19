@@ -23,8 +23,6 @@ io.on('connection', function (socket) {
 
   socket.on('message', function (message) {
     const { name } = userService.getUserById(socket.id);
-    // console.log(message.from);
-    // console.log(name);
     socket.broadcast.emit('message', {
       text: message.text,
       from: name,
@@ -33,10 +31,10 @@ io.on('connection', function (socket) {
     });
   });
 
-  socket.on('delete', function (deleted) {
-    // console.log(deleted[0].id);
+  socket.on('delete', function (toRemove) {
+    const { name } = userService.getUserById(socket.id);
     socket.broadcast.emit('delete', {
-      id: deleted[0].id
+      id: toRemove.id
     });
   });
 

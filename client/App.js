@@ -11,7 +11,7 @@ const socket = io('http://localhost:3000');
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], messages: [], text: '', name: '' };
+    this.state = { users: [], messages: [], text: '', name: '', date: '', id: '' };
   }
 
   componentDidMount() {
@@ -20,16 +20,16 @@ class App extends Component {
     socket.on('delete', id => this.messageRemove(id));
   }
 
-  handleMessageRemove(id) {
-    const remainder = this.state.messages.filter(message => message.id !== id);
-    const deleted = this.state.messages.filter(message => message.id === id);
+  handleMessageRemove(toRemove) {
+    console.log(toRemove)
+    const remainder = this.state.messages.filter(message => message.id !== toRemove.id);
+
     this.setState({ messages: remainder });
-    socket.emit('delete', deleted);
+    socket.emit('delete', toRemove);
   }
 
-  messageRemove(id) {
-    console.log(this.state.messages)
-    console.log(id)
+  messageRemove(idObject) {
+    const id = idObject.id
     const remainder = this.state.messages.filter(message => message.id !== id);
     this.setState({ messages: remainder });
   }
@@ -37,7 +37,6 @@ class App extends Component {
   messageReceive(message) {
     const messages = [message, ...this.state.messages];
     this.setState({ messages });
-    console.log(this.state.messages)
   }
 
   handleMessageSubmit(message) {
