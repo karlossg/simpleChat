@@ -28,7 +28,8 @@ class App extends Component {
   }
 
   messageRemove(id) {
-    // console.log(id)
+    console.log(this.state.messages)
+    console.log(id)
     const remainder = this.state.messages.filter(message => message.id !== id);
     this.setState({ messages: remainder });
   }
@@ -36,6 +37,7 @@ class App extends Component {
   messageReceive(message) {
     const messages = [message, ...this.state.messages];
     this.setState({ messages });
+    console.log(this.state.messages)
   }
 
   handleMessageSubmit(message) {
