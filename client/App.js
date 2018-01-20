@@ -22,17 +22,14 @@ class App extends Component {
 
   handleMessageRemove(toRemove) {
     const remainder = this.state.messages.filter(message => message.id !== toRemove.id);
-
     this.setState({ messages: remainder });
     socket.emit('delete', toRemove);
   }
 
-  messageRemove(idObject) {
-    if (idObject.author === idObject.user) {
-      const id = idObject.id;
-      const remainder = this.state.messages.filter(message => message.id !== id);
-      this.setState({ messages: remainder });
-    }
+  messageRemove(toRemove) {
+    const id = toRemove.id;
+    const remainder = this.state.messages.filter(message => message.id !== id);
+    this.setState({ messages: remainder });
   }
 
   messageReceive(message) {
@@ -65,7 +62,7 @@ class App extends Component {
         <div className={styles.AppBody}>
           <UsersList users={this.state.users} />
           <div className={styles.MessageWrapper}>
-            <MessageList messages={this.state.messages} removeMessage={id => this.handleMessageRemove(id)} />
+            <MessageList name={this.state.name} messages={this.state.messages} user={this.state.name} removeMessage={id => this.handleMessageRemove(id)} />
             <MessageForm onMessageSubmit={message => this.handleMessageSubmit(message)} name={this.state.name} />
           </div>
         </div>

@@ -6,7 +6,8 @@ const DeleteButton = props => (
   <button className={styles.DeleteButton} onClick={() => props.removeMessage(props)}>
     x
   </button>
-);
+)
+
 
 const Message = props => (
   <div className={styles.Message}>
@@ -23,7 +24,8 @@ const MessageList = props => {
         return (
           <div className={styles.MessageRow} key={i}>
             <Message key={message.id} from={message.from} text={message.text} date={message.date} />
-            <DeleteButton key={message.id + 1} id={message.id} from={message.from} removeMessage={id => props.removeMessage(id)} />
+            {message.from === props.user && <DeleteButton key={message.id + 1} id={message.id} from={message.from} removeMessage={id => props.removeMessage(id)} />
+            }
           </div>
         );
       })}
